@@ -1,0 +1,17 @@
+# == Configuration == #
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ms_project
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8082
