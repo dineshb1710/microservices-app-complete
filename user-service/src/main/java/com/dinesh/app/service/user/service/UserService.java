@@ -53,7 +53,7 @@ public class UserService {
             Long deptId = user.getDepartmentId();
 
             // Call DepartmentService via RestTemplate..
-            Department department = restTemplate.getForObject("http://localhost:8081/api/v1/departments/" + deptId, Department.class);
+            Department department = restTemplate.getForObject("http://DEPARTMENT-SERVICE/api/v1/departments/" + deptId, Department.class);
 
             // Construct a responseVO object..
             ResponseVO responseVO = new ResponseVO(user, department);
