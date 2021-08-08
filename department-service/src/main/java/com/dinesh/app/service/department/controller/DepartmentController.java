@@ -4,8 +4,11 @@ import com.dinesh.app.service.department.entity.Department;
 import com.dinesh.app.service.department.service.DepartmentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/departments")
@@ -25,6 +28,13 @@ public class DepartmentController {
     public ResponseEntity<Department> getDepartment(@PathVariable Long id) {
         log.info("Inside getDepartment of DepartmentController with id {} ", id);
         return departmentService.getDepartmentById(id);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Department>> getAllDepartments() {
+        log.info("Inside getAllDepartments of DepartmentController");
+        List<Department> departmentList = departmentService.getAll();
+        return new ResponseEntity<>(departmentList, HttpStatus.FOUND);
     }
 
 }
